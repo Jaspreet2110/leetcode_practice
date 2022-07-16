@@ -1,8 +1,8 @@
 #User function Template for python3
 class Solution: 
     def firstAndLast(self, arr, n, x): 
-        first = self.firstOccurrence(arr, n, x)
-        last = self.lastOccurrence(arr, n, x)
+        first = self.occurrence(arr, n, x, first = True, last = False)
+        last = self.occurrence(arr, n, x, first = False, last = True)
         if first != -1 and last != -1:
             return first, last
         else:
@@ -37,6 +37,24 @@ class Solution:
             else:
                 start = mid + 1
         return last_occurrence
+    
+    def occurrence(self, arr, n , x, first = True, last = False):
+        start = 0
+        end = n - 1
+        occurrence = -1
+        while start <= end:
+            mid = start + (end - start) // 2
+            if x == arr[mid]:
+                occurrence = mid
+                if first:
+                    end = mid - 1
+                if last:
+                    start = mid + 1
+            elif x < arr[mid]:
+                end = mid - 1
+            else:
+                start = mid + 1
+        return occurrence
                 
 
 #{ 
