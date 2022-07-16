@@ -6,7 +6,7 @@ class Solution:
         if first != -1 and last != -1:
             return first, last
         else:
-            return (-1,)
+            return [-1]
     
     def firstOccurrence(self, arr, n, x):
         start = 0
